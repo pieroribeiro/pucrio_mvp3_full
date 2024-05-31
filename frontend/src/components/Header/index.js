@@ -1,18 +1,18 @@
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 import React from "react";
-import { Link } from "react-router-dom";
+import Menu from "./Menu";
 
 export default class Header extends React.Component {
-    render () {
+    render() {
         return (
             <AppBar position="static">
                 <Toolbar>
-                    <Typography variant="h6">Sistema de Gerenciamento de APIs</Typography>
-                    <Button component={ Link } to="/" color="inherit">Home</Button>
-                    <Button component={ Link } to="/graphics" color="inherit">Graphics</Button>
-                    <Button component={ Link } to="/apis" color="inherit">Lista de APIs</Button>
+                    <Typography style={{ flexGrow: 1 }} variant="h6">
+                        {this.props.title || 'Sistema de Gerenciamento de APIs'}
+                    </Typography>
+                    <Menu items={this.props.menuItems || []} />
                 </Toolbar>
             </AppBar>
-        )
+        );
     }
 }
