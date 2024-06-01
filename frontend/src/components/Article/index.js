@@ -31,24 +31,24 @@ export default class Article extends React.Component {
                     <CardHeader
                         avatar={<AvatarStyled aria-label="news">N</AvatarStyled>}
                         title={newsData?.title}
-                        subheader={formatDate(newsData?.publishDate, {}) || 'Data não disponível'}
+                        subheader={formatDate(newsData?.publishedAt, {}) || 'Data não disponível'}
                     />
                 )}
-                {newsData?.image?.url && (
+                {newsData?.urlToImage && (
                     <Media
-                        image={newsData?.image?.url}
-                        title={newsData?.image?.title || 'Imagem da notícia'}
+                        image={newsData?.urlToImage}
+                        title={newsData?.title || 'Imagem da notícia'}
                     />
                 )}
                 <CardContent>
-                    {newsData?.shortDescription && (
+                    {newsData?.description && (
                     <Typography variant="body2" color="textSecondary" component="p">
-                        {newsData?.shortDescription}
+                        {newsData?.description}
                     </Typography>
                     )}
-                    {newsData?.longDescription && (
+                    {newsData?.content && (
                     <Typography variant="body1" component="div">
-                        <div dangerouslySetInnerHTML={{ __html: newsData?.longDescription }} />
+                        <div dangerouslySetInnerHTML={{ __html: newsData?.content }} />
                     </Typography>
                     )}
                 </CardContent>

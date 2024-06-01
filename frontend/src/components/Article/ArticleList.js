@@ -19,10 +19,6 @@ const LinkCard = styled(Link)(({ theme }) => ({
     textDecoration: 'none'
 }));
 
-const CardMediaElement = styled(CardMedia)(({ theme }) => ({
-    // paddingTop: '56.25%', // Mantém a proporção 16:9 da imagem
-}));
-
 export default class ArticleList extends React.Component {
     render () {
         const newsList = this.props?.data;
@@ -31,13 +27,13 @@ export default class ArticleList extends React.Component {
             <Grid container spacing={3}>
                 {newsList.map((news, index) => (
                     <GridElement item key={index} xs={12} sm={6} md={4} lg={3}>
-                        <LinkCard to={`/noticia/${news.id}`} underline="none" color="inherit">
+                        <LinkCard to={`/noticia/${(index+1)}`} underline="none" color="inherit">
                             <CardRoot>
-                                <CardMediaElement
+                                <CardMedia
                                     component="img"
                                     height="140"
-                                    image={news.image}
-                                    alt={news.title}
+                                    image={news?.urlToImage}
+                                    alt={news?.title}
                                 />
                                 <CardHeader
                                     title={
@@ -45,7 +41,7 @@ export default class ArticleList extends React.Component {
                                             <Typography variant="h6">{news?.title}</Typography>
                                         </Box>
                                     }
-                                    subheader={<Typography variant="body1">{formatDate(news?.publishDate)}</Typography>}
+                                    subheader={<Typography variant="body1">{formatDate(news?.publishedAt)}</Typography>}
                                 />
                             </CardRoot>
                         </LinkCard>

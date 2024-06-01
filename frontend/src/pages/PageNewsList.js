@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react"
-import { Config } from '../config'
 import { Paper } from "@mui/material"
 import ArticleList from '../components/Article/ArticleList'
 
 export default function PageNews() {
     const [data, setData] = useState([])
     useEffect(() => {
-        fetch(`http://127.0.0.1:${Config["PORT"]}/news-list.json`)
+        const key = '47a44c3467c84467a0ccd7ae0db9ad9b'
+        const url = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=${key}&pageSize=40&sortBy=publishedAt&language=pt`
+        fetch(url)
             .then(res => res.json())
-            .then(res => setData(res || []))
+            .then(res => setData(res?.articles || []))
             .catch(error => console.log(error))
     }, [])
 
