@@ -27,13 +27,13 @@ export default class ArticleList extends React.Component {
             <Grid container spacing={3}>
                 {newsList.map((news, index) => (
                     <GridElement item key={index} xs={12} sm={6} md={4} lg={3}>
-                        <LinkCard to={`/noticia/${(index+1)}`} underline="none" color="inherit">
+                        <LinkCard to={`/noticia/${news?.id}`} underline="none" color="inherit">
                             <CardRoot>
                                 <CardMedia
                                     component="img"
                                     height="140"
-                                    image={news?.urlToImage}
-                                    alt={news?.title}
+                                    image={news?.image?.url}
+                                    alt={news?.image?.title}
                                 />
                                 <CardHeader
                                     title={

@@ -1,32 +1,23 @@
 import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
-import { Paper } from "@mui/material"
 import Article from "../components/Article"
 import LastNews from '../components/Last-News'
 
 export default function PageNews() {
     const [data, setData] = useState(null)
     const [dataList, setDataList] = useState(null)
-    const { id } = useParams()
     const navigate = useNavigate()
+    const { id } = useParams()
 
     useEffect(() => {
-        const key = '47a44c3467c84467a0ccd7ae0db9ad9b'
-        const url = `https://newsapi.org/v2/everything?q=bitcoin&apiKey=${key}&pageSize=40&sortBy=publishedAt&language=pt`
-        fetch(url)
+        fetch(`/news.json`)
             .then(res => res.json())
             .then(res => {
-                const idNews = parseInt(id-1)
-                if (res?.articles?.length > 0 && idNews >= 0 && idNews < res?.articles?.length) {
-                    setData(res.articles[idNews])
-                    
-                    res.articles.splice(idNews, 1)
-                    const rnd = Math.floor(Math.random() * (res.articles.length - 5))
-                    setDataList(res.articles.map((item, index) => {
-                        const newItem = item
-                        newItem.id = index
-                        return newItem
-                    }).slice(rnd, (rnd + 3)))
+                const news = res.filter(item => parseInt(item.id) === parseInt(id))
+                
+                if (news && news.length > 0) {
+                    setData(news[0])
+                    setDataList(res)
                 } else {
                     navigate("/noticias")
                 }
@@ -36,14 +27,10 @@ export default function PageNews() {
 
     return (
         <>
-            {data ? (
-                <Paper sx={{display: 'flex', flexDirection: "column", justifyContent: 'center', textAlign: 'center', padding: 5}} elevation={2}>
-                    <Article data={data} />
-                    <LastNews data={dataList} />
-                </Paper>
-            ) : (
-                <div>Artigo não encontrado</div>
-            )}
+            <section style={{maxWidth: 1280, margin: "20px auto 0"}}>
+                <Article data={data} />
+                <LastNews data={dataList} />
+            </section>
         </>
     )
 }

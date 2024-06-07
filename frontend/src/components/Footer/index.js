@@ -1,58 +1,29 @@
 import React from "react";
-import { Box, Container, Typography, Grid, Link } from '@mui/material';
+import { Typography, Grid, IconButton } from '@mui/material';
+import LanguageIcon from '@mui/icons-material/Language';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 export default class Footer extends React.Component {
     render () {
         return (
-            <Box
-                component="footer"
-                sx={{
-                    py: 3,
-                    px: 2,
-                    mt: 'auto',
-                    backgroundColor: (theme) => theme.palette.mode === 'light' ? theme.palette.grey[200] : theme.palette.grey[800],
-                }}
-            >
-                <Container maxWidth="lg">
-                    <Grid container spacing={4}>
-                        <Grid item xs={12} sm={6} md={4}>
-                        <Typography variant="h6" gutterBottom>
-                            MVP3 - PUC RIO
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                            Projeto desenvolvido para a disciplina Desenvolvimento Fullstack da PUC Rio.
-                        </Typography>
-                        </Grid>
-                        <Grid item xs={12} sm={6} md={4}>
-                        <Typography variant="h6" gutterBottom>
-                            Links
-                        </Typography>
-                        <Link href="#" variant="body2" color="inherit" display="block" gutterBottom>
-                            Home
-                        </Link>
-                        <Link href="#" variant="body2" color="inherit" display="block" gutterBottom>
-                            Sobre
-                        </Link>
-                        <Link href="#" variant="body2" color="inherit" display="block" gutterBottom>
-                            Contato
-                        </Link>
-                        </Grid>
-                        <Grid item xs={12} sm={6} md={4}>
-                        <Typography variant="h6" gutterBottom>
-                            Contato
-                        </Typography>
-                        <Typography variant="body2" color="textSecondary">
-                            Email: webmaster@n4w.io
-                        </Typography>
-                        </Grid>
+            <section style={{maxWidth: "1280px", margin: "0 auto"}}>
+                <hr />
+                <Grid container spacing={ 4 }>
+                    <Grid item xs={ 1 } alignItems="center" alignContent="center">
+                        <IconButton aria-label="Linkedin.com" onClick={() => window.open('https://www.n4w.io/', '_blank')}>
+                            <LanguageIcon fontSize="large" />
+                        </IconButton>
                     </Grid>
-                    <Box mt={3} textAlign="center">
-                        <Typography variant="caption" color="textSecondary">
-                        © {new Date().getFullYear()} Todos os direitos reservados.
-                        </Typography>
-                    </Box>
-                </Container>
-            </Box>
+                    <Grid item xs={ 1 } alignItems="center" alignContent="center">
+                        <IconButton aria-label="Linkedin.com" onClick={() => window.open('https://www.linkedin.com/company/n4w-web-solutions', '_blank')}>
+                            <LinkedInIcon fontSize="large" />
+                        </IconButton>
+                    </Grid>
+                    <Grid item xs={ 10 } alignItems="center" alignContent="center">
+                        <Typography variant="caption" color="textSecondary">© {new Date().getFullYear()} Todos os direitos reservados.</Typography>
+                    </Grid>
+                </Grid>
+            </section>
         )
     }
 }

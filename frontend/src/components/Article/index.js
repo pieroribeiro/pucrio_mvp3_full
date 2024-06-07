@@ -3,15 +3,6 @@ import { Card, CardHeader, CardMedia, CardContent, Typography, Avatar } from '@m
 import { styled } from '@mui/material/styles';
 import formatDate from "../../utils/formatDate";
 
-const Root = styled(Card)(({ theme }) => ({
-    width: '100%',
-    maxWidth: 1000,
-    margin: 'auto',
-    marginTop: theme.spacing(3),
-    flexGrow: 1,
-    textAlign: 'left'
-}));
-
 const Media = styled(CardMedia)({
     height: 0,
     paddingTop: '56.25%', // 16:9
@@ -26,7 +17,7 @@ export default class Article extends React.Component {
         const newsData = this.props?.data;
 
         return (
-            <Root>
+            <Card>
                 {newsData?.title && (
                     <CardHeader
                         avatar={<AvatarStyled aria-label="news">N</AvatarStyled>}
@@ -34,10 +25,10 @@ export default class Article extends React.Component {
                         subheader={formatDate(newsData?.publishedAt, {}) || 'Data não disponível'}
                     />
                 )}
-                {newsData?.urlToImage && (
+                {newsData?.image?.url && (
                     <Media
-                        image={newsData?.urlToImage}
-                        title={newsData?.title || 'Imagem da notícia'}
+                        image={newsData?.image?.url}
+                        title={newsData?.image?.title || 'Imagem da notícia'}
                     />
                 )}
                 <CardContent>
@@ -52,7 +43,7 @@ export default class Article extends React.Component {
                     </Typography>
                     )}
                 </CardContent>
-            </Root>
+            </Card>
         )
     }
 }
