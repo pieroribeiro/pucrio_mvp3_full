@@ -41,52 +41,55 @@ export default class LastNews extends React.Component {
         return (
             <>
                 {newsData && newsData.splice(10, 40) ? (
-                    <Carousel
-                        swipeable={false}
-                        draggable={false}
-                        showDots={false}
-                        responsive={responsive}
-                        infinite={true}
-                        autoPlay={this.props.deviceType !== "mobile" ? true : false}
-                        autoPlaySpeed={5000}
-                        keyBoardControl={true}
-                        customTransition="all .5"
-                        transitionDuration={500}
-                        containerClass="carousel-container"
-                        removeArrowOnDeviceType={["tablet", "mobile"]}
-                        deviceType={this.props.deviceType}
-                        dotListClass="custom-dot-list-style"
-                        itemClass="carousel-item-padding-20-px">
-                        {newsData.map((item, index) => (
-                            <LinkElement key={index} to={`/noticia/${item.id}`} underline="none" color="inherit">
-                                <Card sx={{ maxWidth: 310, minHeight: 440, marginTop: "20px" }}>
-                                    <CardHeaderElement
-                                        avatar={
-                                            <Avatar sx={{ bgcolor: "#1976D2" }} aria-label="recipe">{item.title.substr(0, 1).toUpperCase()}</Avatar>
-                                        }
-                                        title={item?.title}
-                                    />
-                                    <CardMedia
-                                        component="img"
-                                        height="194"
-                                        alt={item?.image?.title}
-                                        image={item?.image?.url}
-                                        onError={(e) => {
-                                            console.error("Error loading image:", e.target.src);
-                                        }}
-                                    />
-                                    <CardContent>
-                                        <Typography variant="body2" sx={{fontSize: "12px"}} color="text.secondary">
-                                            Publicado em: {formatDate(item?.publishedAt, {})}
-                                        </Typography>
-                                        <Typography variant="body2" sx={{marginTop: "10px"}} color="text.secondary">
-                                            {item?.description}
-                                        </Typography>
-                                    </CardContent>
-                                </Card>
-                            </LinkElement>
-                        ))}
-                    </Carousel>
+                    <>
+                        <Typography variant="h4" sx={{marginTop: "10px"}} color="text.primary">&Uacute;ltimas Not&iacute;cias</Typography>
+                        <Carousel
+                            swipeable={false}
+                            draggable={false}
+                            showDots={false}
+                            responsive={responsive}
+                            infinite={true}
+                            autoPlay={this.props.deviceType !== "mobile" ? true : false}
+                            autoPlaySpeed={5000}
+                            keyBoardControl={true}
+                            customTransition="all .5"
+                            transitionDuration={500}
+                            containerClass="carousel-container"
+                            removeArrowOnDeviceType={["tablet", "mobile"]}
+                            deviceType={this.props.deviceType}
+                            dotListClass="custom-dot-list-style"
+                            itemClass="carousel-item-padding-20-px">
+                            {newsData.map((item, index) => (
+                                <LinkElement key={index} to={`/noticia/${item.id}`} underline="none" color="inherit">
+                                    <Card sx={{ maxWidth: 310, minHeight: 440, marginTop: "20px" }}>
+                                        <CardHeaderElement
+                                            avatar={
+                                                <Avatar sx={{ bgcolor: "#1976D2" }} aria-label="recipe">{item.title.substr(0, 1).toUpperCase()}</Avatar>
+                                            }
+                                            title={item?.title}
+                                        />
+                                        <CardMedia
+                                            component="img"
+                                            height="194"
+                                            alt={item?.image?.title}
+                                            image={item?.image?.url}
+                                            onError={(e) => {
+                                                console.error("Error loading image:", e.target.src);
+                                            }}
+                                        />
+                                        <CardContent>
+                                            <Typography variant="body2" sx={{fontSize: "12px"}} color="text.secondary">
+                                                Publicado em: {formatDate(item?.publishedAt, {})}
+                                            </Typography>
+                                            <Typography variant="body2" sx={{marginTop: "10px"}} color="text.secondary">
+                                                {item?.description}
+                                            </Typography>
+                                        </CardContent>
+                                    </Card>
+                                </LinkElement>
+                            ))}
+                        </Carousel>
+                    </>
                 ) : (
                     <>
                     </>
