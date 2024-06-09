@@ -1,7 +1,7 @@
 import React from "react";
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
-import { Card, CardHeader, CardMedia, CardContent, Typography, Avatar } from '@mui/material';
+import { Card, CardHeader, CardMedia, CardContent, Typography, Avatar, Divider } from '@mui/material';
 import formatDate from "../../utils/formatDate";
 import { styled } from "@mui/system";
 import { Link } from "react-router-dom";
@@ -42,7 +42,8 @@ export default class LastNews extends React.Component {
             <>
                 {newsData && newsData.splice(10, 40) ? (
                     <>
-                        <Typography variant="h4" sx={{marginTop: "10px"}} color="text.primary">&Uacute;ltimas Not&iacute;cias</Typography>
+                        <Divider />
+                        <Typography variant="h4" sx={{marginTop: "20px"}} color="text.primary">&Uacute;ltimas Not&iacute;cias</Typography>
                         <Carousel
                             swipeable={false}
                             draggable={false}

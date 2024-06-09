@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react"
 import LastNews from '../components/Last-News';
+import { Box } from "@mui/system";
+import HighlightGroup from "../components/Highlight-Group";
 
 export default function PageHome() {
   const [data, setData] = useState(null)
@@ -13,12 +15,13 @@ export default function PageHome() {
 
   return (
     <>
-      <section>
-      </section>
+      <Box>
+        <HighlightGroup />
+      </Box>
 
-      <section style={{maxWidth: 1280, margin: "0 auto"}}>
+      <Box sx={{maxWidth: 1280, margin: "20px auto 0"}}>
         <LastNews data={data} />
-      </section>
+      </Box>
     </>
   )
 }
