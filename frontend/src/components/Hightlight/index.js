@@ -41,10 +41,9 @@ export default class Highlight extends React.Component {
         return (
             <Box style={{maxWidth: "630px", margin: "0 auto"}}>
                 <LinkElement to={`/noticia/${item?.id}`} underline="none" color="inherit">
-                    <Card sx={{ maxWidth: 630, minHeight: 440, border: "none", boxShadow: "none", position: "relative" }}>
+                    <Card sx={{ maxWidth: 630, minHeight: 400, border: "none", boxShadow: "none", position: "relative" }}>
                         <CustomCardMedia
                             component="img"
-                            maxHeight="440"
                             alt={item?.image?.title}
                             image={item?.image?.url}
                             onError={(e) => {

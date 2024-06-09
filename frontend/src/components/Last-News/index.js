@@ -43,7 +43,7 @@ export default class LastNews extends React.Component {
                 {newsData && newsData.splice(10, 40) ? (
                     <>
                         <Divider />
-                        <Typography variant="h4" sx={{marginTop: "20px"}} color="text.primary">&Uacute;ltimas Not&iacute;cias</Typography>
+                        <Typography variant="h4" sx={{marginTop: "40px"}} color="text.primary">&Uacute;ltimas Not&iacute;cias</Typography>
                         <Carousel
                             swipeable={false}
                             draggable={false}
