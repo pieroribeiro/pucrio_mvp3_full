@@ -6,20 +6,12 @@ export default function Layout () {
   const siteName = "N4W - Web Solutions"
   const menuItems = [
     {
-      title: "Home",
-      url: "/"
-    },
-    {
       title: "Notícias",
       url: "/noticias"
     },
     {
-      title: "Gráficos",
-      url: "/graficos"
-    },
-    {
-      title: "Gerenciamento de APIs",
-      url: "/apis"
+      title: "Sobre",
+      url: "/sobre"
     }
   ];
 
