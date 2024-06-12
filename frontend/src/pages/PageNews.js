@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom";
 import Article from "../components/Article"
 import LastNews from '../components/Last-News'
+import { Box } from "@mui/material";
 
 export default function PageNews() {
     const [data, setData] = useState(null)
@@ -26,11 +27,9 @@ export default function PageNews() {
     }, [id, navigate])
 
     return (
-        <>
-            <section style={{maxWidth: 1280, margin: "20px auto 0"}}>
-                <Article data={data} />
-                <LastNews data={dataList} />
-            </section>
-        </>
+        <Box sx={{maxWidth: "1280px", margin: "40px auto 0"}}>
+            <Article data={data} />
+            <LastNews data={dataList} />
+        </Box>
     )
 }

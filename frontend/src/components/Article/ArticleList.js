@@ -24,30 +24,33 @@ export default class ArticleList extends React.Component {
         const newsList = this.props?.data;
 
         return (
-            <Grid container spacing={3}>
-                {newsList.map((news, index) => (
-                    <GridElement item key={index} xs={12} sm={6} md={4} lg={3}>
-                        <LinkCard to={`/noticia/${news?.id}`} underline="none" color="inherit">
-                            <CardRoot>
-                                <CardMedia
-                                    component="img"
-                                    height="140"
-                                    image={news?.image?.url}
-                                    alt={news?.image?.title}
-                                />
-                                <CardHeader
-                                    title={
-                                        <Box minHeight={120}>
-                                            <Typography variant="h6">{news?.title}</Typography>
-                                        </Box>
-                                    }
-                                    subheader={<Typography variant="body1">{formatDate(news?.publishedAt)}</Typography>}
-                                />
-                            </CardRoot>
-                        </LinkCard>
-                    </GridElement>
-                ))}
-            </Grid>
+            <>
+                <Typography sx={{marginTop: 4, fontSize: "40px", fontWeight: "bold"}} color="#333333" variant="h1">Últimas Notícias</Typography>
+                <Grid sx={{marginTop: 1}} container spacing={3}>
+                    {newsList.map((news, index) => (
+                        <GridElement item key={index} xs={12} sm={6} md={4} lg={3}>
+                            <LinkCard to={`/noticia/${news?.id}`} underline="none" color="inherit">
+                                <CardRoot>
+                                    <CardMedia
+                                        component="img"
+                                        height="140"
+                                        image={news?.image?.url}
+                                        alt={news?.image?.title}
+                                    />
+                                    <CardHeader
+                                        title={
+                                            <Box minHeight={120}>
+                                                <Typography variant="body1" color="#828282" sx={{fontSize: "16px"}}>{news?.title}</Typography>
+                                            </Box>
+                                        }
+                                        subheader={<Typography variant="body1" color="#828282" sx={{fontSize: "14px"}}>{formatDate(news?.publishedAt)}</Typography>}
+                                    />
+                                </CardRoot>
+                            </LinkCard>
+                        </GridElement>
+                    ))}
+                </Grid>
+            </>
         )
     }
 }

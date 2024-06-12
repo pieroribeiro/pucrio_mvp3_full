@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import ArticleList from '../components/Article/ArticleList'
+import { Box } from "@mui/material"
 
 export default function PageNews() {
     const [data, setData] = useState([])
@@ -11,8 +12,8 @@ export default function PageNews() {
     }, [])
 
     return (
-        <section style={{maxWidth: 1280, margin: "0 auto"}}>
+        <Box sx={{maxWidth: "1280px", margin: "40px auto 0"}}>
             <ArticleList data={data} />           
-        </section>
+        </Box>
     )
 }

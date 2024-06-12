@@ -43,7 +43,7 @@ export default class LastNews extends React.Component {
                 {newsData && newsData.splice(10, 40) ? (
                     <>
                         <Divider />
-                        <Typography variant="h4" sx={{marginTop: "40px"}} color="text.primary">&Uacute;ltimas Not&iacute;cias</Typography>
+                        <Typography variant="h4" sx={{marginTop: "40px", fontWeight: "bold"}} color="#333333">&Uacute;ltimas Not&iacute;cias</Typography>
                         <Carousel
                             swipeable={false}
                             draggable={false}
@@ -63,7 +63,7 @@ export default class LastNews extends React.Component {
                             {newsData.map((item, index) => (
                                 <LinkElement key={index} to={`/noticia/${item.id}`} underline="none" color="inherit">
                                     <Card sx={{ maxWidth: 310, minHeight: 440, marginTop: "20px" }}>
-                                        <CardHeaderElement
+                                        <CardHeaderElement sx={{color: "#828282"}} 
                                             avatar={
                                                 <Avatar sx={{ bgcolor: "#1976D2" }} aria-label="recipe">{item.title.substr(0, 1).toUpperCase()}</Avatar>
                                             }
@@ -79,10 +79,10 @@ export default class LastNews extends React.Component {
                                             }}
                                         />
                                         <CardContent>
-                                            <Typography variant="body2" sx={{fontSize: "12px"}} color="text.secondary">
+                                            <Typography variant="body1" sx={{fontSize: "12px", fontStyle: "italic"}} component="span" color="#828282">
                                                 Publicado em: {formatDate(item?.publishedAt, {})}
                                             </Typography>
-                                            <Typography variant="body2" sx={{marginTop: "10px"}} color="text.secondary">
+                                            <Typography variant="body1" sx={{marginTop: "10px", fontSize: "14px"}} component="p" color="#828282">
                                                 {item?.description}
                                             </Typography>
                                         </CardContent>
