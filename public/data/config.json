@@ -1,0 +1,15 @@
+{
+    "information": {
+        "title": "N4W - Seu Portal de Notícias"    
+    },
+    "menuItems": [
+        {
+            "title": "Notícias",
+            "url": "/noticias"
+        },
+        {
+            "title": "Sobre",
+            "url": "/sobre"
+        }
+    ]
+}

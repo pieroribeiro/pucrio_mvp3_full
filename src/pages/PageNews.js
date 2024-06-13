@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Article from "../components/Article"
 import LastNews from '../components/Last-News'
 import { Box } from "@mui/material";
+import fetchData from "../services/fetchData";
 
 export default function PageNews() {
     const [data, setData] = useState(null)
@@ -11,8 +12,7 @@ export default function PageNews() {
     const { id } = useParams()
 
     useEffect(() => {
-        fetch(`/news.json`)
-            .then(res => res.json())
+        fetchData(`/data/news.json`)
             .then(res => {
                 const news = res.filter(item => parseInt(item.id) === parseInt(id))
                 

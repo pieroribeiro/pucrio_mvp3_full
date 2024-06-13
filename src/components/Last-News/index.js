@@ -36,7 +36,7 @@ const responsive = {
 
 export default class LastNews extends React.Component {
     render () {
-        const newsData = this.props?.data;
+        const newsData = this.props?.data?.slice(0, 12);
         
         return (
             <>
@@ -45,9 +45,9 @@ export default class LastNews extends React.Component {
                         <Divider />
                         <Typography variant="h4" sx={{marginTop: "40px", fontWeight: "bold"}} color="#333333">&Uacute;ltimas Not&iacute;cias</Typography>
                         <Carousel
-                            swipeable={false}
-                            draggable={false}
-                            showDots={false}
+                            swipeable={true}
+                            draggable={true}
+                            showDots={true}
                             responsive={responsive}
                             infinite={true}
                             autoPlay={this.props.deviceType !== "mobile" ? true : false}

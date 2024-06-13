@@ -2,7 +2,6 @@ import React from "react";
 import { Card, CardHeader, CardMedia, CardContent, Typography, Avatar } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import formatDate from "../../utils/formatDate";
-import { color, fontSize, fontWeight } from "@mui/system";
 
 const Media = styled(CardMedia)({
     height: 0,

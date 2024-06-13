@@ -2,14 +2,14 @@ import { useEffect, useState } from "react"
 import LastNews from '../components/Last-News';
 import HighlightGroup from "../components/Highlight-Group";
 import { Box } from "@mui/material";
+import fetchData from "../services/fetchData";
 
 export default function PageHome() {
   const [data, setData] = useState([])
   const [dataHighlight, setHighlight] = useState([])
   
   useEffect(() => {
-    fetch(`/news.json`)
-      .then(res => res.json())
+    fetchData(`/data/news.json`)
       .then(res => {
         setData(res)
         setHighlight([res[Math.floor(Math.random() * res.length)], res[Math.floor(Math.random() * res.length)]])
