@@ -3,18 +3,10 @@ import ArticleList from '../components/Article/ArticleList'
 import { Box } from "@mui/material"
 import fetchData from "../services/fetchData"
 import GoogleAds from "../components/Google-Ads"
+import { useOutletContext } from "react-router-dom"
 
 export default function PageNews() {
-    const dataAds = [{
-        title: "Anúncio 1 - Página Lista",
-        imageUrl: "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%201%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
-    },{
-        title: "Anúncio 2 - Página Lista",
-        imageUrl: "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%202%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
-    },{
-        title: "Anúncio 3 - Página Lista",
-        imageUrl: "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%203%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
-    }]
+    const dataConfig = useOutletContext()
 
     const [data, setData] = useState([])
     useEffect(() => {
@@ -29,7 +21,7 @@ export default function PageNews() {
                 <ArticleList data={data} />           
             </Box>
             <Box sx={{display: "flex", flexDirection: "column", maxWidth: "300px", margin: "60px 0 0 20px"}}>
-                {dataAds.map((itemAds, i) => (
+                {(dataConfig?.ads || []).map((itemAds, i) => (
                     <GoogleAds key={i} data={itemAds} styles={{display: "flex", flexDirection: "column", margin: "20px 0 0 0"}} />
                 ))}    
             </Box>

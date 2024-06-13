@@ -18,7 +18,7 @@ export default function Layout () {
   return (
     <>
       <Header title={dataConfig?.information?.title} menuItems={dataConfig?.menuItems} />
-      <Outlet />
+      <Outlet context={dataConfig} />
       <Footer />
     </>
   )

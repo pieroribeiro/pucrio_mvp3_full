@@ -11,5 +11,17 @@
             "title": "Sobre",
             "url": "/sobre"
         }
+    ],
+    "ads": [
+        {
+            "title": "Anúncio 1 - Página Lista",
+            "imageUrl": "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%201%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
+        },{
+            "title": "Anúncio 2 - Página Lista",
+            "imageUrl": "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%202%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
+        },{
+            "title": "Anúncio 3 - Página Lista",
+            "imageUrl": "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%203%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
+        }
     ]
 }
