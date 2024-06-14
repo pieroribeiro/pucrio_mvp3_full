@@ -8,7 +8,7 @@ export default class HighlightGroup extends React.Component {
 
         if(data && data.length === 2) {
             return (
-                <Box sx={{margin: "20px auto 0", maxWidth: "1280px", height: "auto"}}>
+                <Box sx={{marginTop: "20px"}}>
                     <Grid container spacing={2}>
                         <Grid item xs={6}>
                             <Highlight data={data[0]} />
