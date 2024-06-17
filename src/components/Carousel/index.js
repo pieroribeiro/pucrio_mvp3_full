@@ -7,85 +7,76 @@ export default class Carousel extends React.Component {
         super(props)
         this.next = this.next.bind(this);
         this.prev = this.prev.bind(this);
+        this.getItemsByPage = this.getItemsByPage.bind(this);
+        
+        this.itemsToScroll = props?.itemsToScroll || 3;
+        this.styles = props?.styles || {};
+                        
         this.state = {
-            left: 0,
-            current: 1, 
-            right: 2
+            actualPage: 0,
+            items: []
+        };
+    }
+    
+    componentDidMount() {
+        setTimeout(() => {
+            this.data = this.props.data || [];
+            this.totalItems = this.data.length || 0;
+            this.totalPages = Math.floor( this.totalItems / this.itemsToScroll );
+            this.gridViewItems = Math.floor(12 / this.itemsToScroll);
+              
+            this.setState({
+                actualPage: 0,
+                items: this.getItemsByPage(0)
+            });
+        }, 1000);
+    }
+
+    getItemsByPage (page) {
+        const firstItem = (page * this.itemsToScroll);
+        const lastItem = ((page * this.itemsToScroll) + (this.itemsToScroll - 1));
+        let items = [];
+        for (let a = firstItem; a <= lastItem; a++) {
+            items.push(a);
         }
-        this.totalItems = 0
+        return items;
     }
 
     next () {
-        console.log({
-            buttom: 'next',
-            left: this.state.left,
-            current: this.state.current,
-            right: this.state.right,
-            totalItems: this.totalItems
-        })
-        if ((this.state.right + this.itemsToScroll) < this.totalItems) {
+        if (this.state.actualPage < this.totalPages) {
             this.setState({
-                current: this.state.current + this.itemsToScroll,
-                right: this.state.right + this.itemsToScroll,
-                left: this.state.left + this.itemsToScroll
+                actualPage: this.state.actualPage + 1,
+                items: this.getItemsByPage(this.state.actualPage + 1)
             });
-        } else if ((this.state.right + 1) < this.totalItems) {
-            this.setState({
-                current: this.state.current + 1,
-                right: this.state.right + 1,
-                left: this.state.left + 1
-            });
-        } else {
-            
         }
     }
 
     prev () {
-        // console.log('prevBtn', 'before_render', {
-        //     current: this.state.current,
-        //     right: this.state.right,
-        //     left: this.state.left
-        // })
-        if ((this.state.left - this.itemsToScroll) >= 0) {
+        if (this.state.actualPage > 1) {
             this.setState({
-                current: this.state.current - this.itemsToScroll,
-                right: this.state.right - this.itemsToScroll,
-                left: this.state.left - this.itemsToScroll
-            });
-        } else if ((this.state.left - 1) >= 0) {
-            this.setState({
-                current: this.state.current - 1,
-                right: this.state.right - 1,
-                left: this.state.left - 1
+                actualPage: this.state.actualPage - 1,
+                items: this.getItemsByPage(this.state.actualPage - 1)
             });
         }
     }
 
     render () {
-        const data = this.props?.data || [];
-        const styles = this.props?.styles || {};
-        
-        this.itemsToScroll = this.props?.itemsToScroll || 1;
-        this.totalItems = data.length;
-        
-        return (
-            <Box sx={styles}>
-                {(data && data?.length) ? (
-                    <>
-                        <Grid container spacing={2}>
-                            {[this.state.left, this.state.current, this.state.right].map(idx => (
-                                <Grid item xs={4} key={idx}>
-                                    <CardItem data={data[idx]} />
-                                </Grid>
-                            ))}
-                        </Grid>
-                        <Button onClick={() => this.prev()}>{"\u2770"}</Button>
-                        <Button onClick={() => this.next()}>{"\u2771"}</Button>
-                    </>
-                ) : (
-                    <></>
-                )}
-            </Box>
-        )
+        const { items } = this.state;
+
+        if (items.length > 0) {
+            return (
+                <Box sx={this.styles}>
+                    <Grid container spacing={2}>
+                        {items.map((item, i) => (
+                            <Grid item xs={this.gridViewItems} key={i}>
+                                <CardItem data={this.data[item]} />
+                            </Grid>
+                        ))}
+                    </Grid>
+                    <Button onClick={() => this.prev()}>{"\u2770"}</Button>
+                    <Button onClick={() => this.next()}>{"\u2771"}</Button>
+                </Box>
+            )
+        }
     }
 }

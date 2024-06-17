@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, CardMedia, CardContent, Typography, Avatar } from '@mui/material';
+import { Box, CardMedia, CardContent, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import formatDate from "../../utils/formatDate";
 
@@ -7,41 +7,25 @@ const Media = styled(CardMedia)({
     height: 0,
     paddingTop: '56.25%', // 16:9
 });
-  
-const AvatarStyled = styled(Avatar)(({ theme }) => ({
-    backgroundColor: theme.palette.primary.main,
-}));
-
-const CustomCardHeader = styled(CardHeader)(({ theme}) => ({
-    ".MuiCardHeader-title": {
-        fontSize: "36px",
-        color: "#333333",
-        fontWeight: "normal"
-    },
-    ".MuiCardHeader-subheader": {
-        fontSize: "14px",
-        color: "#828282",
-        fontWeight: "normal"
-    }
-}));
 
 export default class Article extends React.Component {
     render () {
         const newsData = this.props?.data;
 
         return (
-            <Card>
+            <Box>
                 {newsData?.title && (
-                    <CustomCardHeader
-                        avatar={<AvatarStyled aria-label="news">N</AvatarStyled>}
-                        title={newsData?.title}
-                        titleTypographyProps={{component: "h1"}}
-                        subheaderTypographyProps={{component: "h3"}}
-                        subheader={formatDate(newsData?.publishedAt, {}) || 'Data não disponível'}
-                    />
+                    <>
+                        <Typography variant="h1" sx={{fontSize: "30px"}} color="textPrimary" component="h1">
+                            {newsData?.title}
+                        </Typography>
+                        <Typography variant="body2" sx={{margin: "20px 0 0 0"}} color="textPrimary" component="h5">
+                            {formatDate(newsData?.publishedAt, {}) || 'Data não disponível'}
+                        </Typography>
+                    </>
                 )}
                 {newsData?.image?.url && (
-                    <Media
+                    <Media sx={{margin: "20px 0 0 0"}}
                         image={newsData?.image?.url}
                         title={newsData?.image?.title || 'Imagem da notícia'}
                     />
@@ -58,7 +42,7 @@ export default class Article extends React.Component {
                     </Typography>
                     )}
                 </CardContent>
-            </Card>
+            </Box>
         )
     }
 }

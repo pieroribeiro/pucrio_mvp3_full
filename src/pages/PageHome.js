@@ -3,22 +3,17 @@ import HighlightGroup from "../components/Highlight-Group";
 import { Box, Grid, Typography } from "@mui/material";
 import GoogleAds from '../components/Google-Ads';
 import Carousel from "../components/Carousel";
-import fetchData from "../services/fetchData";
 import { useOutletContext } from "react-router-dom";
 
 export default function PageHome() {
-  const dataConfig = useOutletContext()
+  const [dataConfig, dataNewsList] = useOutletContext()
   const [data, setData] = useState([])
   const [dataHighlight, setHighlight] = useState([])
   
   useEffect(() => {
-    fetchData(`/data/news.json`)
-      .then(res => {
-        setData(res.slice(0, 35))
-        setHighlight([res[Math.floor(Math.random() * res.length)], res[Math.floor(Math.random() * res.length)]])
-      })
-      .catch(error => console.log(error))
-    }, [])
+    setData(dataNewsList)
+    setHighlight([dataNewsList[Math.floor(Math.random() * dataNewsList.length)], dataNewsList[Math.floor(Math.random() * dataNewsList.length)]])
+  }, [dataNewsList])
 
   return (
     <Box sx={{maxWidth: "1280px", margin: "40px auto 0"}}>

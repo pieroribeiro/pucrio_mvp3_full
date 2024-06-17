@@ -18,7 +18,7 @@ export default class CardItem extends React.Component {
         if (data) {
             return (
                 <LinkElement to={`/noticia/${data.id}`} underline="none" color="inherit">
-                    <Card sx={{ minWidth: 310, maxWidth: 310, minHeight: 480 }}>
+                    <Card sx={{ minWidth: 310, maxWidth: 310, minHeight: 500 }}>
                         <CardHeaderElement sx={{color: "#828282", minHeight: 100}} 
                             avatar={
                                 <Avatar sx={{ bgcolor: "#1976D2" }} aria-label="recipe">{data.title.substr(0, 1).toUpperCase()}</Avatar>
