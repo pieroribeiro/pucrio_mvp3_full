@@ -7,11 +7,9 @@ import { useOutletContext } from "react-router-dom";
 
 export default function PageHome() {
   const [dataConfig, dataNewsList] = useOutletContext()
-  const [data, setData] = useState([])
   const [dataHighlight, setHighlight] = useState([])
   
   useEffect(() => {
-    setData(dataNewsList)
     setHighlight([dataNewsList[Math.floor(Math.random() * dataNewsList.length)], dataNewsList[Math.floor(Math.random() * dataNewsList.length)]])
   }, [dataNewsList])
 
@@ -25,14 +23,17 @@ export default function PageHome() {
           <Grid item container spacing={0}>
             <Grid item xs={9}>
               <Typography variant="h4" sx={{marginTop: "20px", fontWeight: "bold"}} color="#333333">&Uacute;ltimas Not&iacute;cias</Typography>
-              <Carousel styles={{marginTop: "20px"}} data={data} itemsToScroll={3} />
+              <Carousel styles={{marginTop: "20px"}} data={dataNewsList} itemsToScroll={3} />
             </Grid>
             <Grid item xs={3} marginLeft="auto">
-              <GoogleAds data={dataConfig?.ads && dataConfig?.ads[0]} styles={{margin: "65px 0 0 20px"}} />
-              <GoogleAds data={dataConfig?.ads && dataConfig?.ads[1]} styles={{margin: "20px 0 0 20px"}} />
+              <GoogleAds data={dataConfig?.ads && dataConfig?.ads?.rectangle[0]} styles={{margin: "65px 0 0 20px"}} />
+              <GoogleAds data={dataConfig?.ads && dataConfig?.ads?.rectangle[1]} styles={{margin: "20px 0 0 20px"}} />
             </Grid>
           </Grid>
-        </Grid>                
+        </Grid>
+        <Grid item xs={12}>
+          <GoogleAds data={dataConfig?.ads && dataConfig?.ads?.full[0]} styles={{margin: "20px 0 0 0"}} />
+        </Grid>               
       </Grid>
     </Box>
   )

@@ -6,21 +6,22 @@ import { useEffect, useState } from 'react'
 
 export default function Layout () {
   const [dataConfig, setConfig] = useState({})
-  const [dataNewsList, setDataNewsList] = useState({})
+  const [dataNewsList, setDataNewsList] = useState([])
   const [dataAbout, setAbout] = useState({})
   
   useEffect(() => {
-    fetchData(`/data/config.json`)
-    .then(res => {setConfig(res)})
-    .catch(error => console.log(error))
+    async function fetchAllData () {      
+      let response = await fetchData(`/data/config.json`)
+      setConfig(response)
+        
+      response = await fetchData(`/data/news.json`)
+      setDataNewsList(response.slice(0, 35))
+        
+      response = await fetchData(`/data/about.json`)
+      setAbout(response)
+    }
 
-    fetchData(`/data/news.json`)
-    .then(res => setDataNewsList(res.slice(0, 35)))
-    .catch(error => console.log(error))
-
-    fetchData(`/data/about.json`)
-    .then(res => setAbout(res || []))
-    .catch(error => console.log(error))
+    fetchAllData();
   }, [])
 
   return (

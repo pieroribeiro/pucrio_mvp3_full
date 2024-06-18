@@ -14,8 +14,11 @@ export default function PageNews() {
                     <ArticleList styles={{maxWidth: "960px", margin: "10px 0 0 0"}} data={dataNewsList} />
                 </Grid>
                 <Grid item xs={3}>
-                    <GoogleAds data={dataConfig?.ads && dataConfig?.ads[0]} styles={{margin: "25px 0 0 20px"}} />
-                    <GoogleAds data={dataConfig?.ads && dataConfig?.ads[1]} styles={{margin: "20px 0 0 20px"}} />
+                    <GoogleAds data={dataConfig?.ads && dataConfig?.ads?.rectangle[0]} styles={{margin: "25px 0 0 20px"}} />
+                    <GoogleAds data={dataConfig?.ads && dataConfig?.ads?.rectangle[1]} styles={{margin: "20px 0 0 20px"}} />
+                </Grid>
+                <Grid item xs={12}>
+                    <GoogleAds data={dataConfig?.ads && dataConfig?.ads?.full[0]} styles={{margin: "20px 0 0 0"}} />
                 </Grid>                
             </Grid>
         </Box>

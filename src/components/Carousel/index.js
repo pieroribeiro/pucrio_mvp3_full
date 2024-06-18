@@ -29,7 +29,7 @@ export default class Carousel extends React.Component {
                 actualPage: 0,
                 items: this.getItemsByPage(0)
             });
-        }, 1000);
+        }, 200);
     }
 
     getItemsByPage (page) {

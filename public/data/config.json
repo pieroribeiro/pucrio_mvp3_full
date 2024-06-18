@@ -12,16 +12,28 @@
             "url": "/sobre"
         }
     ],
-    "ads": [
-        {
-            "title": "Anúncio 1 - Página Lista",
-            "imageUrl": "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%201%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
-        },{
-            "title": "Anúncio 2 - Página Lista",
-            "imageUrl": "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%202%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
-        },{
-            "title": "Anúncio 3 - Página Lista",
-            "imageUrl": "https://placehold.jp/14/3d4070/ffffff/300x250.png?text=Google%20ADs%203%20na%20p%C3%A1gina%20de%20listagem%20de%20not%C3%ADcias"
-        }
-    ]
+    "ads": {
+        "rectangle": [
+            {
+                "title": "Retângulo 1",
+                "imageUrl": "https://placehold.co/300x250/DFDFDF/145EA8?font=roboto&text=Google%20ADs%20-%20Banner%20001"
+            },{
+                "title": "Retângulo 2",
+                "imageUrl": "https://placehold.co/300x250/DFDFDF/145EA8?font=roboto&text=Google%20ADs%20-%20Banner%20002"
+            },{
+                "title": "Retângulo 3",
+                "imageUrl": "https://placehold.co/300x250/DFDFDF/145EA8?font=roboto&text=Google%20ADs%20-%20Banner%20003"
+            }
+        ],
+        "full" : [
+            {
+                "title": "Full Banner 1",
+                "imageUrl": "https://placehold.co/1280x90/DFDFDF/145EA8?font=roboto&text=Google%20ADs%20-%20Banner%20001"
+            },
+            {
+                "title": "Full Banner 2",
+                "imageUrl": "https://placehold.co/1280x90/DFDFDF/145EA8?font=roboto&text=Google%20ADs%20-%20Banner%20002"
+            }
+        ]
+    }
 }
