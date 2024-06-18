@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import Header from "../components/Header"
 import Footer from '../components/Footer'
 import fetchData from '../services/fetchData'
@@ -8,6 +8,7 @@ export default function Layout () {
   const [dataConfig, setConfig] = useState({})
   const [dataNewsList, setDataNewsList] = useState([])
   const [dataAbout, setAbout] = useState({})
+  const location = useLocation()
   
   useEffect(() => {
     async function fetchAllData () {      
@@ -26,7 +27,7 @@ export default function Layout () {
 
   return (
     <>
-      <Header title={dataConfig?.information?.title} menuItems={dataConfig?.menuItems} />
+      <Header title={dataConfig?.information?.title} menuItems={dataConfig?.menuItems} location={location} />
       <Outlet context={[dataConfig, dataNewsList, dataAbout]} />
       <Footer />
     </>
