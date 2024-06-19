@@ -17,7 +17,6 @@ const MenuItem = styled(Button)`
 
 export default class Menu extends React.Component {
     render () {
-        console.log(this.props.location)
         return (
             <div className="MenuContainer" style={{marginTop: 20}}>
                 {
