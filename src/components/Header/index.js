@@ -11,7 +11,7 @@ export default class Header extends React.Component {
                     <Link to="/" style={{flexGrow: 1, textDecoration: "none", color: "#FFFFFF"}}>
                         <Typography variant="h6" sx={{fontSize: 24, marginTop: 2}}>{this.props.title || 'N4W Web Solutions'}</Typography>
                     </Link>
-                    <Menu items={this.props.menuItems || []} />
+                    <Menu location={this.props.location} items={this.props.menuItems || []} />
                 </Toolbar>
             </AppBar>
         );
