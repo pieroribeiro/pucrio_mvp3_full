@@ -25,7 +25,7 @@ docker build -t pucriomvp3full .
 
 #### ✅ Executar o container Docker contruído anteriormente:
 ```
-docker run -d -p 8000:80 pucriomvp3full
+docker run -d -p 5000:80 pucriomvp3full
 ```
 
 #### ✅ Verifique se o container Docker está em execução:
@@ -40,7 +40,7 @@ docker stats
 #### ✅ Executar o projeto:
 Para execução do projeto, basta acessar a url abaixo no Browser:
 
-[Portal de Notícias](http://localhost:8000)
+[Portal de Notícias](http://localhost:5000)
 
 
 ### ✅ - Para cancelar a execução do container Docker, executar o seguinte comando na raíz deste repositório:
