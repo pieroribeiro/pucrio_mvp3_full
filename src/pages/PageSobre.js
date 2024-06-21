@@ -2,6 +2,14 @@ import { Box, Grid, Typography } from "@mui/material";
 import GoogleAds from "../components/Google-Ads";
 import { useOutletContext } from "react-router-dom";
 import Carousel from "../components/Carousel";
+import { styled } from "@mui/system";
+
+const DescriptionComponent = styled(Typography)(({ theme }) => (`
+    & img {
+        width: min(960px, 100%);
+        aspect-ratio: 16 / 9;
+    }
+`));
 
 export default function PageSobre() {
     const [dataConfig, dataNewsList, dataAbout] = useOutletContext()
@@ -11,7 +19,7 @@ export default function PageSobre() {
             <Typography sx={{fontSize: "40px", fontWeight: "bold"}} color="#333333" variant="h1">{dataAbout?.title}</Typography>
             <Grid container>
                 <Grid item xs={9}>
-                    <Typography variant="body1" color="textSecondary" component="p" dangerouslySetInnerHTML={{ __html: dataAbout?.description }} />
+                    <DescriptionComponent variant="body1" color="textSecondary" component="p" dangerouslySetInnerHTML={{ __html: dataAbout?.description }} />
                 </Grid>
                 <Grid item xs={3}>
                     <GoogleAds data={dataConfig?.ads && dataConfig?.ads?.rectangle[0]} styles={{margin: "25px 0 0 20px"}} />
